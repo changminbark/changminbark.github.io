@@ -1,0 +1,44 @@
+# site settings
+title: Chang Min's
+subtitle: Personal Portfolio
+email: cb073@bucknell.edu
+description: Want to know more about me?
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://changminbark.github.io/" # the base hostname & protocol for your site
+author:
+street_address: 701 Moore Avenue, Bucknell University
+city: Lewisburg
+state: PA
+zip_code: 17837
+country: United States of America
+phone: (272) 788-0862
+
+# homepage tiles
+tiles-source: pages # accepts "posts" or "pages"
+tiles-count: 6
+
+# social settings (key must match name of font awesome icon)
+# see https://fontawesome.com/icons?d=gallery&p=2&s=brands
+# Icons are not shown if value is empty
+# You need to restart jekyll for changes to have an effect
+socials:
+  GitHub: https://github.com/changminbark
+  GitLab:
+  Google-Plus: 
+  Instagram:
+  LinkedIn: https://www.linkedin.com/in/chang-min-bark-0091b7b9/
+  Twitter: 
+  Facebook:
+  Slack:
+
+# build settings
+markdown: kramdown
+
+sass:
+  style: compressed
+
+exclude:
+- "*.gemspec"
+- LICENSE.md
+- CONTRIBUTING.md
+- README.md 
