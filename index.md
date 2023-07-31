@@ -15,6 +15,8 @@ show_tile: false
   </div>
 </div>
 
+<p></p>
+
 <div class="row">
     <div class="4u 12u$(medium)">
 		<h3>Artificial Intelligence Research</h3>
