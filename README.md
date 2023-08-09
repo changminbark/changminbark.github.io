@@ -5,7 +5,7 @@ This fully-responsive website showcases my projects as well as some background i
 
 ![Forty Theme](assets/images/forty.jpg "Forty Theme")
 
-# How to Use
+<!-- # How to Use
 
 For those unfamiliar with how Jekyll works, check out [jekyllrb.com](https://jekyllrb.com/) for all the details, 
 or read up on just the basics of [front matter](https://jekyllrb.com/docs/frontmatter/), [writing posts](https://jekyllrb.com/docs/posts/), 
@@ -20,7 +20,7 @@ Simply fork this repository and start editing the `_config.yml` file!
 * **[Formspree.io](https://formspree.io/) contact form integration** - just add your email to the `_config.yml` and it works!
 * Use `_config.yml` to **set whether the homepage tiles should pull pages or posts**, as well as how many to display.
 * Add your **social profiles** easily in `_config.yml`. Only social profiles buttons you enter in `config.yml` show up on the site footer!
-* Set **featured images** in front matter.
+* Set **featured images** in front matter. -->
 
 # Credits
 
