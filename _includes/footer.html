@@ -27,6 +27,7 @@
 					<span class="icon alt fa-envelope"></span>
 					<h3>Email</h3>
 					<a href="mailto:{{ site.email }}">{{ site.email }}</a>
+					<a href="mailto:{{ site.email }}">{{ site.school_email }}</a>
 				</div>
 			</section>
 			<section>
@@ -66,6 +67,7 @@
 <!-- Footer -->
 	<footer id="footer">
 		<div class="inner">
+			<label>My Social Media Links</label>
 			<ul class="icons">
 				{% for key_value in site.socials %}
 					{% if key_value[1] %}
@@ -76,12 +78,6 @@
 						</li>
 					{% endif %}
 				{% endfor %}
-			</ul>
-			<ul class="copyright">
-				<li>&copy; {{ site.title }} {{ site.subtitle }}</li>
-				<li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
-				<li>Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a></li>
-
 			</ul>
 		</div>
 	</footer>

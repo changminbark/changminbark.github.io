@@ -2,7 +2,7 @@
 layout: landing
 title: Projects
 
-description: 'Lorem ipsum dolor sit amet nullam consequa<br />sed veroeros. tempus adipiscing nulla.'
+description: 'Personal and Team Projects'
 image: assets/images/vscode.png
 nav-menu: true
 ---

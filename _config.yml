@@ -1,7 +1,8 @@
 # site settings
 title: Chang Min's
 subtitle: Personal Portfolio
-email: cb073@bucknell.edu
+email: changminbark@gmail.com
+school_email: cb073@bucknell.edu
 description: Want to know more about me?
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://changminbark.github.io/" # the base hostname & protocol for your site
@@ -11,7 +12,7 @@ city: Lewisburg
 state: PA
 zip_code: 17837
 country: United States of America
-phone: (272) 788-0862
+phone: +1 (272) 788-0862
 
 # homepage tiles
 tiles-source: pages # accepts "posts" or "pages"
@@ -25,10 +26,10 @@ socials:
   GitHub: https://github.com/changminbark
   GitLab:
   Google-Plus: 
-  Instagram:
+  Instagram: https://www.instagram.com/changminbark
   LinkedIn: https://www.linkedin.com/in/chang-min-bark-0091b7b9/
-  Twitter: 
-  Facebook:
+  Twitter: https://twitter.com/changmin_bark
+  Facebook: https://www.facebook.com/bark.changmin
   Slack:
 
 # build settings
