@@ -23,7 +23,7 @@ Simply fork this repository and start editing the `_config.yml` file!
 
 # Credits
 
-This portfolio is based on the Jekyll "Forty" theme made by [HTML5 UP](https://html5up.net/), which was integrated into jekyll
+This portfolio is an adaptation of the Jekyll "Forty" theme made by [HTML5 UP](https://html5up.net/), which was integrated into jekyll
 by Andrew Banchich.
 
-For full credits and the original README from HTML5 UP, please click on this [link](https://github.com/andrewbanchich/forty-jekyll-theme).
+For full credits and the original README from HTML5 UP, please click on this [link](https://github.com/andrewbanchich/forty-jekyll-theme). 
