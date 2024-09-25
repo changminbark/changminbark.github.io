@@ -1,12 +1,13 @@
 ---
 layout: home
 title: Home
-landing-title: 'Welcome to my portfolio website!'
+landing-title: "Welcome to my portfolio website!"
 description: null
 image: null
 author: null
 show_tile: false
 ---
+
 <div class="row">
   <div class="row 50% uniform">
 		<div class="4u"><span class="image fit"><img src="{% link assets/images/neural.png %}" alt="" /></span></div>
@@ -20,11 +21,11 @@ show_tile: false
 <div class="row">
     <div class="4u 12u$(medium)">
 		<h3>Artificial Intelligence Research</h3>
-		<p>In my research, I delve into the intricacies of convolutional neural networks (CNNs), specifically focusing on the interplay between training epochs. Through modifying and enhancing a CNN model utilizing the Adam optimizer, I meticulously capture all parameters and gradients. I am actively exploring innovative techniques and methodologies to dissect and visualize the intricate patterns within the training process, aiming to deepen our understanding of CNN behavior and enhance model performance. Additionally, I extend my investigation by recreating a parallel model within Excel, shedding light on the nuanced processes underlying CNN training dynamics.</p>
+		<p>In my research, I explore advanced machine learning techniques and their applications. Currently, I am preparing to work with Professor Brian King on time-series stock price forecast prediction using machine learning models such as deep echo state networks. This research aims to leverage these models' capabilities to accurately predict stock market movements over time. Previously, I have delved into convolutional neural networks (CNNs), focusing on the intricacies of training epochs. By modifying and enhancing a CNN model with the Adam optimizer, I meticulously captured all parameters and gradients to analyze performance. I also recreated a parallel model in Excel, illuminating the nuanced processes underlying CNN training dynamics. My ongoing research continues to deepen our understanding of AI models and their applications in both stock forecasting and neural network training.</p>
     </div>
     <div class="4u 12u$(medium)">
 		<h3>Application/Web Development</h3>
-		<p>In my application and web development endeavors, I've embarked on diverse projects showcasing my proficiency across various tech stacks. Notable among these are a vibrant social media platform crafted using the MERN stack, an ongoing sentiment analysis endeavor harnessing AI/ML to gauge company sentiment from scraped Google News data, and my integral role as a Fullstack developer in crafting the TedXBucknell University website. Additionally, I've honed my skills through engaging in numerous in-class projects, ranging from Java Springboot implementations to Python-based ventures, further enriching my development repertoire.</p>
+		<p>In my application and web development endeavors, I've embarked on diverse projects showcasing my proficiency across various tech stacks. Notable among these is Destinex, where I led a cross-functional team using the MERN stack (MongoDB, Express, React, Node.js) to create a platform for ordering deliveries and services overseas, improving data processing speed by 30% and reducing server response time by 25%. I have also contributed as a Fullstack developer to the TedXBucknell University website. Additionally, I've undertaken significant work in backend engineering, such as optimizing the notification system at Hangry Indonesia, where I rewrote processes in Golang, achieving a 90% efficiency boost, and implemented a Redis Streams-based message queue, reducing cloud hosting costs by 70%. My repertoire also includes sentiment analysis projects using AI/ML for company sentiment tracking from Google News data, alongside various in-class projects, from Java Spring Boot implementations to Python-based ventures, enriching my development portfolio further.</p>
     </div>
     <div class="4u 12u$(medium)">
 		<h3>Entrepreneurship</h3>
