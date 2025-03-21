@@ -3,7 +3,7 @@ layout: page
 title: Resume
 
 description:
-image: assets/images/engr.jpg
+image: assets/images/linkedin.png
 nav-menu: true
 ---
 

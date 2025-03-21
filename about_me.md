@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-image: assets/images/snow.jpg
+image: assets/images/train.jpg
 nav-menu: true
 ---
 
