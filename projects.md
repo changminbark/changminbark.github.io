@@ -22,6 +22,20 @@ nav-menu: true
 <!-- Two -->
 <section id="two" class="spotlights">
 
+	<section>
+    	<a href="generic.html" class="image">
+    		<img src="{% link assets/images/meta.jpg %}" alt="" data-position="center center" />
+    	</a>
+    	<div class="content">
+    		<div class="inner">
+    			<header class="major">
+    				<h3>Meta - Production Engineering</h3>
+    			</header>
+    			<p>I supported the Database as a Service (Enterprise Engineering) team at Meta. I reduced MySQL Clusterset diagnosis time by 70% by creating dashboards and automated alerts based on MySQL Clusterset status. I also implemented a CLI tool in Rust for a quick overview of general Clusterset status, allowing oncall engineers to get a glance into unhealthy clusters, ensuring high availability of the MySQL fleets for core internal operations.</p>
+    		</div>
+    	</div>
+    </section>
+
     <section>
     	<a href="generic.html" class="image">
     		<img src="{% link assets/images/hangry.jpg %}" alt="" data-position="top center" />
@@ -48,23 +62,6 @@ nav-menu: true
     			<p>As an open source developer, I contributed to the integration of the IDraggable interface into Blockly’s multi-select plugin, eliminating the need for monkey patches. I ensured compatibility by cross-testing with 6+ existing plugins and provided detailed documentation to guide future improvements.</p>
     			<ul class="actions">
     				<li><a href="https://github.com/changminbark/workspace-multiselect" class="button">Learn more</a></li>
-    			</ul>
-    		</div>
-    	</div>
-    </section>
-
-    <section>
-    	<a href="generic.html" class="image">
-    		<img src="{% link assets/images/destinex.jpg %}" alt="" data-position="center center" />
-    	</a>
-    	<div class="content">
-    		<div class="inner">
-    			<header class="major">
-    				<h3>Destinex</h3>
-    			</header>
-    			<p>I led a cross-functional team to build a platform using the MERN stack (MongoDB, Express, React, Node.js) that allows people to order deliveries/services overseas. As Scrum Master, I managed over 500 commits and 50+ merge requests, and optimized the backend to improve data processing speed by 30% and reduce server response time by 25%.</p>
-    			<ul class="actions">
-    				<li><a href="https://github.com/changminbark/Destinex" class="button">Learn more</a></li>
     			</ul>
     		</div>
     	</div>
