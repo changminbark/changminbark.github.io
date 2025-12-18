@@ -14,7 +14,7 @@ nav-menu: true
 		<header class="major">
 			<h2>Hi!</h2>
 		</header>
-		<p>My name is Chang Min Bark and I am an undergraduate Computer Science & Engineering Major at Bucknell University (Class of 2026). I am also pursuing a degree in Business Management as well as a minor in Mathematics. I was born in Surabaya, Indonesia, but both my parents are Korean. Please feel free to contact me! I would love to connect with anyone.</p>
+		<p>My name is Chang Min Bark and I am an undergraduate Computer Science & Engineering Major at Bucknell University (Class of 2026). I was born in Surabaya, Indonesia, but both my parents are Korean. Please feel free to contact me! I would love to connect with anyone.</p>
 	</div>
 </section>
 
@@ -22,7 +22,7 @@ nav-menu: true
 <section id="two" class="spotlights">
 	<section>
 		<a href="generic.html" class="image">
-			<img src="{% link assets/images/indy.jpg %}" alt="" data-position="center center" />
+			<img src="{% link assets/images/kopiku.jpeg %}" alt="" data-position="center center" />
 		</a>
 		<div class="content">
 			<div class="inner">
@@ -48,7 +48,7 @@ nav-menu: true
 	</section>
 	<section>
 		<a href="generic.html" class="image">
-			<img src="{% link assets/images/frenchie.jpg %}" alt="" data-position="25% 25%" />
+			<img src="{% link assets/images/gravy.jpg %}" alt="" data-position="25% 25%" />
 		</a>
 		<div class="content">
 			<div class="inner">
