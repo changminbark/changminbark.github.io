@@ -1,29 +1,44 @@
 # Chang Min's Personal Portfolio
 
-This fully-responsive website showcases my projects as well as some background information about me!
-[Website Link](https://changminbark.github.io/).  
+A single-page personal portfolio.
 
+Live: [changminbark.github.io](https://changminbark.github.io/)
 
-<!-- # How to Use
+## Structure
 
-For those unfamiliar with how Jekyll works, check out [jekyllrb.com](https://jekyllrb.com/) for all the details, 
-or read up on just the basics of [front matter](https://jekyllrb.com/docs/frontmatter/), [writing posts](https://jekyllrb.com/docs/posts/), 
-and [creating pages](https://jekyllrb.com/docs/pages/).
+```
+index.html    # the entire site (HTML + inline CSS)
+.nojekyll     # tells GitHub Pages to serve files as-is, no Jekyll
+.github/workflows/github-pages.yml   # auto-deploy on push to main
+```
 
-Simply fork this repository and start editing the `_config.yml` file!
+## Edit & test locally
 
-> NOTE: GitHub Actions is required to deploy to GitHub Pages because GitHub [refuses to update their version of Jekyll](https://github.com/github/pages-gem/issues/651).
+All content lives in `index.html`. To preview changes:
 
-# Added Features
+**Option 1 — open the file directly**
 
-* **[Formspree.io](https://formspree.io/) contact form integration** - just add your email to the `_config.yml` and it works!
-* Use `_config.yml` to **set whether the homepage tiles should pull pages or posts**, as well as how many to display.
-* Add your **social profiles** easily in `_config.yml`. Only social profiles buttons you enter in `config.yml` show up on the site footer!
-* Set **featured images** in front matter. -->
+```
+open index.html
+```
 
-# Credits
+The page works as a plain file:// URL. Fonts are loaded from Google Fonts over the network.
 
-This portfolio is an adaptation of the Jekyll "Forty" theme made by [HTML5 UP](https://html5up.net/), which was integrated into jekyll
-by Andrew Banchich.
+**Option 2 — serve it over http (recommended; matches GitHub Pages)**
 
-For full credits and the original README from HTML5 UP, please click on this [link](https://github.com/andrewbanchich/forty-jekyll-theme). 
+```
+python3 -m http.server 4321
+```
+
+Then visit `http://localhost:4321/`. Any change to `index.html` shows up on refresh — no build step.
+
+## Deployment
+
+Every push to `main` deploys to GitHub Pages via `.github/workflows/github-pages.yml` (using `actions/deploy-pages`). No Jekyll, no Gemfile, no `_site/` build output.
+
+One-time setup on GitHub:
+
+1. Repo → **Settings** → **Pages**
+2. Set **Source** to **GitHub Actions**
+
+After that, `git push` to `main` is the whole deploy flow.

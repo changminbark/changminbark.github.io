@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chang Min Bark</title>
+  <meta name="description" content="Chang Min Bark — CS senior at Bucknell, building ML infrastructure and distributed systems. Recently at Meta; contributor to SGLang and Kubernetes." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23faf7f2'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='600' fill='%231a1a1a'%3ECM%3C/text%3E%3Ccircle cx='25' cy='23' r='2.2' fill='%233d6aa5'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --bg-alt: #f2ece3;
+      --ink: #1a1a1a;
+      --muted: #6b6b6b;
+      --line: #e5ddd0;
+      --accent: #3d6aa5;
+      --accent-soft: #c8d6e8;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0;
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .logo .dot { color: var(--accent); }
+    .logo-short { display: none; }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0 120px;
+    }
+
+    .hero-text h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 72px;
+      font-weight: 500;
+      line-height: 1.05;
+      margin: 0 0 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text p {
+      font-size: 17px;
+      color: #333;
+      max-width: 480px;
+      margin: 0 0 16px;
+    }
+
+    .hero-text a.highlight {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent-soft);
+      transition: border-color 0.2s ease;
+    }
+
+    .hero-text a.highlight:hover { border-bottom-color: var(--accent); }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-frame .photo-blob {
+      position: absolute;
+      inset: -6% -8% -10% -6%;
+      z-index: 0;
+      pointer-events: none;
+      width: auto;
+      height: auto;
+    }
+
+    .photo-frame .photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      filter: saturate(0.9) contrast(0.98);
+    }
+
+    .photo-frame .photo-dot {
+      position: absolute;
+      z-index: 2;
+      right: -10px;
+      bottom: -10px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+    }
+
+    /* Section */
+    section {
+      padding: 80px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0 0 24px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 500;
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+
+    p { margin: 0 0 16px; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-grid p {
+      font-size: 17px;
+      color: #333;
+    }
+
+    /* Experience & Projects */
+    .entries { display: flex; flex-direction: column; gap: 48px; }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+    }
+
+    .entry-date {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      padding-top: 4px;
+    }
+
+    .entry-role {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .entry-role a {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent-soft);
+    }
+
+    .entry-role a:hover { border-bottom-color: var(--accent); }
+
+    .entry ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .entry li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 15.5px;
+    }
+
+    .entry li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 8px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .entry li strong { font-weight: 600; color: var(--ink); }
+
+    /* Skills */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 48px;
+    }
+
+    .skill-group h4 {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .skill-group p {
+      font-size: 15px;
+      color: #333;
+      margin: 0;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-grid h2 {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .contact-grid .lead {
+      font-size: 17px;
+      color: #333;
+      max-width: 420px;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-list a {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-list a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .contact-list .label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0 60px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--line);
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    .container, .hero, section, footer { position: relative; z-index: 1; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      background: rgba(250, 247, 242, 0.82);
+      backdrop-filter: blur(10px) saturate(1.1);
+      -webkit-backdrop-filter: blur(10px) saturate(1.1);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Hero keyword cloud (behind hero content, desktop only) */
+    .hero-cloud {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+    }
+
+    .hero-cloud .cloud-seg {
+      position: absolute;
+      overflow: hidden;
+      height: 22px;
+      opacity: 0.16;
+    }
+
+    .hero-cloud .cloud-run {
+      display: inline-block;
+      white-space: nowrap;
+      font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--ink);
+      will-change: transform;
+    }
+
+    .hero-text, .hero-visual { position: relative; z-index: 1; }
+
+    @media (max-width: 820px) {
+      .hero-cloud { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-cloud { display: none; }
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .container { padding: 0 24px; }
+      nav {
+        padding: 24px 0;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+      }
+      .logo { font-size: 18px; white-space: nowrap; }
+      .logo-full { display: none; }
+      .logo-short { display: inline; }
+      .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .nav-links a { font-size: 11px; letter-spacing: 0.14em; }
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 0 80px;
+      }
+      .hero-text h1 { font-size: 48px; }
+      .hero-visual { order: -1; max-width: 280px; margin: 0 auto; }
+      section { padding: 56px 0; }
+      h2 { font-size: 28px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+      .contact-grid h2 { font-size: 36px; }
+      .entry { grid-template-columns: 1fr; gap: 12px; }
+      .skills { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo" data-top><span class="logo-full">Chang Min</span><span class="logo-short">CMB</span><span class="dot">.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="top" style="border-top: none;">
+      <div class="hero-cloud" aria-hidden="true"></div>
+      <div class="hero-text">
+        <h1>Hello,</h1>
+        <p>
+          I'm Chang Min, a builder and engineer at Meta interested in
+          <strong>ML infrastructure</strong> and <strong>distributed systems</strong>.
+        </p>
+        <p>
+          Most recently at <a class="highlight" href="#work">Meta</a>, where I took database platform SLA availability to 99.99% for 125+ enterprise customers. Currently contributing to <a class="highlight" href="https://github.com/sgl-project/sglang" target="_blank" rel="noopener">SGLang</a> and <a class="highlight" href="https://github.com/kubernetes-sigs/inference-perf" target="_blank" rel="noopener">Kubernetes</a> on LLM inference performance.
+        </p>
+      </div>
+      <div class="hero-visual">
+        <div class="photo-frame">
+          <img class="photo" src="assets/images/kopiku.jpeg" alt="Chang Min holding a coffee in front of Kopiku, an Indonesian café in San Francisco." />
+          <span class="photo-dot" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-label">About</div>
+      <div class="about-grid">
+        <h2>Curious about systems that scale.</h2>
+        <div>
+          <p>
+            I like the messy middle of software: the place where a request leaves one machine, gets queued, balanced, replicated, and still has to come back fast. That's pulled me toward databases, backend infra, and lately the emerging problem space of <strong>LLM inference at scale</strong>.
+          </p>
+          <p>
+            I'm also drawn to the <strong>founder side</strong> of building: the <em>why</em> behind what gets built. I've shipped end-to-end at an early-stage startup (Hangry), competed in the YC &times; Google DeepMind hackathon, and run my own products. Early-stage technical tradeoffs (what to build, what to skip, what to bet on) are the kind of questions I like chewing on.
+          </p>
+          <p>
+            Outside of work, I work on open source (SGLang, Kubernetes SIG Inference-Perf, and an AI Gateway / envoy project), read papers on inference serving, and occasionally ship a side project end-to-end.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-label">Education</div>
+      <h2>Education.</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="entry-date">Expected May 2026</div>
+          <div>
+            <h3>Bucknell University</h3>
+            <p class="entry-role">B.S. in Computer Science and Engineering &middot; Lewisburg, PA</p>
+            <ul>
+              <li><strong>Relevant coursework:</strong> AI with Neural Nets, Operating Systems, Computer Systems, Computer Networks &amp; Security, Algorithms Design &amp; Analysis, Software Engineering &amp; Design, Data Structures &amp; Algorithms, Linear Algebra, Discrete Structures, Entrepreneurial Finance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-label">Work</div>
+      <h2>Experience</h2>
+      <div class="entries">
+
+        <div class="entry">
+          <div class="entry-date">May &ndash; Aug 2025</div>
+          <div>
+            <h3>Meta</h3>
+            <p class="entry-role">Software Engineering Intern, Production Engineering &middot; Fremont, CA</p>
+            <ul>
+              <li><strong>Took platform SLA availability to 99.99%</strong> across MySQL, MSSQL, and MongoDB for 125+ enterprise customers via an automated alerting system built in Python and Chef.</li>
+              <li><strong>Cut SEV recovery time by 67% (15&rarr;5 min)</strong> with custom observability dashboards for the distributed database fleet.</li>
+              <li><strong>Added 400+ new database metrics and logs</strong>, extending the collection framework and reducing operational overhead across multi-datacenter deployments.</li>
+              <li><strong>Automated mass failover validation for 500+ HA databases</strong> via a new Thrift API and CLI subcommand surfacing real-time cluster status.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">May &ndash; Aug 2024</div>
+          <div>
+            <h3>Hangry Indonesia</h3>
+            <p class="entry-role">Backend Engineer Intern &middot; Remote / Jakarta</p>
+            <ul>
+              <li><strong>Optimized the notification microservice by 97% (30ms&rarr;1ms)</strong> by rewriting it in Go with concurrent, async workflows, serving 20,000+ DAU.</li>
+              <li><strong>Reduced cloud infrastructure cost by 70%</strong> by replacing RabbitMQ with a Redis Streams queue, connecting PostgreSQL directly on AWS, and tuning queries.</li>
+              <li><strong>Shrank finance audit time by 75% (4 days&rarr;1 day)</strong> with a containerized supply-order verification service using GPT-4o image processing over REST.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-label">Open Source &amp; Projects</div>
+      <h2>Things I've been building.</h2>
+      <div class="entries">
+
+        <div class="entry">
+          <div class="entry-date">Feb 2026 &ndash; Present</div>
+          <div>
+            <h3>SGLang</h3>
+            <p class="entry-role">Open Source Contributor &middot; <a href="https://github.com/sgl-project/sglang/issues/19137" target="_blank" rel="noopener">Apple Device Support Roadmap &rarr;</a></p>
+            <ul>
+              <li><strong>Raised LLM inference throughput by 20%</strong> on Apple Metal devices by enabling CPU&ndash;GPU overlap scheduling via asynchronous evaluation of MLX arrays.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">Oct 2025 &ndash; Present</div>
+          <div>
+            <h3>Kubernetes SIG Inference-Perf</h3>
+            <p class="entry-role">Kubernetes Member / Open Source Contributor &middot; <a href="https://github.com/kubernetes-sigs/inference-perf" target="_blank" rel="noopener">kubernetes-sigs/inference-perf &rarr;</a></p>
+            <ul>
+              <li><strong>Extended the benchmarking framework with MultiLoRA support</strong>, enabling simultaneous evaluation of 300+ adapters on OpenAI-compatible servers (vLLM); surfaced 10% latency variance across configurations.</li>
+              <li><strong>Architected a high-concurrency load generator</strong> to simulate 100+ concurrent clients for LLM benchmarks in Kubernetes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">Jan &ndash; May 2025</div>
+          <div>
+            <h3>Chiron</h3>
+            <p class="entry-role">Personal Project &middot; <a href="https://chiron-ta.com" target="_blank" rel="noopener">chiron-ta.com &rarr;</a></p>
+            <ul>
+              <li><strong>Shipped a production RAG pipeline</strong> on FastAPI with semantic embeddings over 7+ file formats (PDF, PPT, DOCX) via the docling parser and Qdrant for retrieval.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">Also on GitHub</div>
+          <div>
+            <h3>More</h3>
+            <p class="entry-role">envoy AI Gateway &middot; Lantern (neural net training engine) &middot; Car Mechanic AI Assistant (YC + DeepMind hackathon) &middot; PR Review AI Agent &middot; TCP server in C &middot; containers in Go &middot; Google Summer of Code (MIT App Inventor / Google Blockly)</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-label">Stack</div>
+      <h2>Tools I reach for.</h2>
+      <div class="skills">
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <p>Python, Go, Rust, C, C++, TypeScript, Java, SQL</p>
+        </div>
+        <div class="skill-group">
+          <h4>Distributed Systems</h4>
+          <p>Kubernetes, Docker, gRPC, Apache Thrift, Envoy, consensus (Raft), high availability</p>
+        </div>
+        <div class="skill-group">
+          <h4>ML Infrastructure</h4>
+          <p>SGLang, vLLM, llm-d, AI Gateway, PyTorch, Apple MLX, inference serving</p>
+        </div>
+        <div class="skill-group">
+          <h4>Backend &amp; Data</h4>
+          <p>FastAPI, Node.js, REST, GraphQL, MySQL, PostgreSQL, MongoDB, Redis, Qdrant, Neo4j</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-grid">
+        <div>
+          <div class="section-label">Contact</div>
+          <h2>Say hi.</h2>
+          <p class="lead">Always happy to talk about ML infrastructure, distributed systems, or a project you're building.</p>
+        </div>
+        <div class="contact-list">
+          <a href="https://linkedin.com/in/chang-min-bark-0091b7b9/" target="_blank" rel="noopener">
+            <span>/in/chang-min-bark</span>
+            <span class="label">LinkedIn</span>
+          </a>
+          <a href="https://github.com/changminbark" target="_blank" rel="noopener">
+            <span>@changminbark</span>
+            <span class="label">GitHub</span>
+          </a>
+          <a href="https://twitter.com/changmin_bark" target="_blank" rel="noopener">
+            <span>@changmin_bark</span>
+            <span class="label">X</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>&copy; 2026 Chang Min Bark</div>
+      <div>San Francisco, CA</div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll-to-top for logo
+    (function () {
+      var logo = document.querySelector('.logo[data-top]');
+      if (!logo) return;
+      logo.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var hero = document.querySelector('.hero');
+      var cloud = document.querySelector('.hero-cloud');
+      var heroText = document.querySelector('.hero-text');
+      if (!hero || !cloud || !heroText) return;
+      if (window.innerWidth < 820) return;
+
+      var KEYWORDS = [
+        'python', 'golang', 'rust', 'typescript', 'c++', 'kubernetes', 'docker',
+        'grpc', 'thrift', 'envoy', 'raft', 'sglang', 'vllm', 'pytorch', 'mlx',
+        'inference', 'llm-d', 'observability', 'prometheus', 'fastapi',
+        'postgresql', 'redis', 'qdrant', 'mongodb', 'chef', 'aws', 'linux',
+        'distributed-systems', 'high-availability', 'fault-tolerance', 'consensus',
+        'microservices', 'benchmarking', 'rag', 'load-balancing', 'multi-threading',
+        'neural-nets', 'backend', 'gitops', 'semantic-embeddings', 'cli',
+        'failover', 'sharding', 'replication', 'bucknell', 'meta',
+        'open-source', 'ci-cd', 'async', 'concurrency'
+      ];
+      var SEPARATOR = '  ·  ';
+      var FONT = '14px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
+      var LH = 30;
+      var INSET = 10;
+      var MIN_SEG_WIDTH = 70;
+      var UNIT_REPEAT = 10;
+
+      var segments = [];
+
+      function buildUnit(rotation) {
+        var n = ((rotation % KEYWORDS.length) + KEYWORDS.length) % KEYWORDS.length;
+        return KEYWORDS.slice(n).concat(KEYWORDS.slice(0, n)).join(SEPARATOR) + SEPARATOR;
+      }
+
+      // Deterministic pseudo-random in [0, 1) so marquee speeds stay stable on resize.
+      function hash01(a, b) {
+        var h = ((a | 0) * 1201 ^ (b | 0) * 2333) >>> 0;
+        h ^= h >>> 13;
+        h = Math.imul(h, 0xcc9e2d51) >>> 0;
+        h ^= h >>> 16;
+        return (h >>> 0) / 4294967296;
+      }
+
+      function availableRanges(y, heroWidth, exclusions) {
+        var ranges = [{ start: 0, end: heroWidth }];
+        for (var i = 0; i < exclusions.length; i++) {
+          var ex = exclusions[i];
+          if (y + LH < ex.top || y > ex.bottom) continue;
+          var next = [];
+          for (var j = 0; j < ranges.length; j++) {
+            var r = ranges[j];
+            var L = ex.left - INSET, R = ex.right + INSET;
+            if (R <= r.start || L >= r.end) { next.push(r); continue; }
+            if (L > r.start) next.push({ start: r.start, end: L });
+            if (R < r.end)   next.push({ start: R, end: r.end });
+          }
+          ranges = next;
+        }
+        return ranges;
+      }
+
+      // Measure one keyword unit's rendered width once via canvas — no DOM reflow, no library.
+      var measureCtx = document.createElement('canvas').getContext('2d');
+      measureCtx.font = FONT;
+      var unitWidth = measureCtx.measureText(buildUnit(0)).width;
+
+      function render() {
+        cloud.innerHTML = '';
+        segments = [];
+
+        var heroRect = hero.getBoundingClientRect();
+        var textRect = heroText.getBoundingClientRect();
+        if (heroRect.width < 100 || heroRect.height < 80) return;
+
+        var exclusions = [{
+          left:   textRect.left   - heroRect.left,
+          right:  textRect.right  - heroRect.left,
+          top:    textRect.top    - heroRect.top,
+          bottom: textRect.bottom - heroRect.top
+        }];
+
+        var rowIdx = 0;
+        for (var y = 6; y + LH <= heroRect.height; y += LH, rowIdx++) {
+          var ranges = availableRanges(y, heroRect.width, exclusions);
+          for (var slotIdx = 0; slotIdx < ranges.length; slotIdx++) {
+            var r = ranges[slotIdx];
+            var segWidth = r.end - r.start;
+            if (segWidth < MIN_SEG_WIDTH) continue;
+
+            var seg = document.createElement('div');
+            seg.className = 'cloud-seg';
+            seg.style.top   = y + 'px';
+            seg.style.left  = r.start + 'px';
+            seg.style.width = segWidth + 'px';
+
+            var run = document.createElement('div');
+            run.className = 'cloud-run';
+            var rot = (rowIdx * 3 + slotIdx * 11) % KEYWORDS.length;
+            run.textContent = buildUnit(rot).repeat(UNIT_REPEAT);
+            seg.appendChild(run);
+            cloud.appendChild(seg);
+
+            segments.push({
+              run:   run,
+              speed: 6 + hash01(rowIdx, slotIdx) * 10,
+              phase: hash01(rowIdx + 13, slotIdx + 7) * unitWidth
+            });
+          }
+        }
+      }
+
+      render();
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(render, 150);
+      });
+
+      function tick(now) {
+        var t = now / 1000;
+        for (var i = 0; i < segments.length; i++) {
+          var s = segments[i];
+          var off = -(((t * s.speed + s.phase) % unitWidth) + unitWidth) % unitWidth;
+          s.run.style.transform = 'translateX(' + off.toFixed(1) + 'px)';
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+
+      function updateFade() {
+        var rect = hero.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var inView = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+        var frac = Math.min(1, inView / Math.min(rect.height, vh));
+        cloud.style.opacity = (frac * frac).toFixed(3);
+      }
+      updateFade();
+      window.addEventListener('scroll', updateFade, { passive: true });
+      window.addEventListener('resize', updateFade);
+    })();
+  </script>
+</body>
+</html>
