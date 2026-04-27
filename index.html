@@ -201,6 +201,35 @@
       color: #333;
     }
 
+    .about-graphic {
+      margin-top: 28px;
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+    }
+
+    .about-graphic .cloud-outline {
+      fill: none;
+      stroke: var(--muted);
+      stroke-width: 1.4;
+    }
+
+    .about-graphic .nn-edge {
+      stroke: var(--accent-soft);
+      stroke-width: 1;
+    }
+
+    .about-graphic .nn-node {
+      fill: var(--bg);
+      stroke: var(--accent);
+      stroke-width: 1.2;
+    }
+
+    @media (max-width: 820px) {
+      .about-graphic { display: none; }
+    }
+
     /* Experience & Projects */
     .entries { display: flex; flex-direction: column; gap: 48px; }
 
@@ -468,7 +497,50 @@
     <section id="about">
       <div class="section-label">About</div>
       <div class="about-grid">
-        <h2>Curious about systems that scale.</h2>
+        <div>
+          <h2>Curious about systems that scale.</h2>
+          <svg class="about-graphic" viewBox="0 0 240 160" aria-hidden="true">
+            <path class="cloud-outline" d="M 48 118 A 26 26 0 0 1 58 64 A 30 30 0 0 1 112 52 A 26 26 0 0 1 162 62 A 24 24 0 0 1 196 100 A 22 22 0 0 1 174 134 A 20 20 0 0 1 138 138 A 22 22 0 0 1 96 140 A 20 20 0 0 1 62 134 A 24 24 0 0 1 48 118 Z"/>
+            <g class="nn-edges">
+              <line class="nn-edge" x1="82" y1="80"  x2="120" y2="70"/>
+              <line class="nn-edge" x1="82" y1="80"  x2="120" y2="88"/>
+              <line class="nn-edge" x1="82" y1="80"  x2="120" y2="106"/>
+              <line class="nn-edge" x1="82" y1="80"  x2="120" y2="124"/>
+              <line class="nn-edge" x1="82" y1="98"  x2="120" y2="70"/>
+              <line class="nn-edge" x1="82" y1="98"  x2="120" y2="88"/>
+              <line class="nn-edge" x1="82" y1="98"  x2="120" y2="106"/>
+              <line class="nn-edge" x1="82" y1="98"  x2="120" y2="124"/>
+              <line class="nn-edge" x1="82" y1="116" x2="120" y2="70"/>
+              <line class="nn-edge" x1="82" y1="116" x2="120" y2="88"/>
+              <line class="nn-edge" x1="82" y1="116" x2="120" y2="106"/>
+              <line class="nn-edge" x1="82" y1="116" x2="120" y2="124"/>
+              <line class="nn-edge" x1="120" y1="70"  x2="158" y2="80"/>
+              <line class="nn-edge" x1="120" y1="70"  x2="158" y2="98"/>
+              <line class="nn-edge" x1="120" y1="70"  x2="158" y2="116"/>
+              <line class="nn-edge" x1="120" y1="88"  x2="158" y2="80"/>
+              <line class="nn-edge" x1="120" y1="88"  x2="158" y2="98"/>
+              <line class="nn-edge" x1="120" y1="88"  x2="158" y2="116"/>
+              <line class="nn-edge" x1="120" y1="106" x2="158" y2="80"/>
+              <line class="nn-edge" x1="120" y1="106" x2="158" y2="98"/>
+              <line class="nn-edge" x1="120" y1="106" x2="158" y2="116"/>
+              <line class="nn-edge" x1="120" y1="124" x2="158" y2="80"/>
+              <line class="nn-edge" x1="120" y1="124" x2="158" y2="98"/>
+              <line class="nn-edge" x1="120" y1="124" x2="158" y2="116"/>
+            </g>
+            <g class="nn-nodes">
+              <circle class="nn-node" cx="82"  cy="80"  r="3.2"/>
+              <circle class="nn-node" cx="82"  cy="98"  r="3.2"/>
+              <circle class="nn-node" cx="82"  cy="116" r="3.2"/>
+              <circle class="nn-node" cx="120" cy="70"  r="3.2"/>
+              <circle class="nn-node" cx="120" cy="88"  r="3.2"/>
+              <circle class="nn-node" cx="120" cy="106" r="3.2"/>
+              <circle class="nn-node" cx="120" cy="124" r="3.2"/>
+              <circle class="nn-node" cx="158" cy="80"  r="3.2"/>
+              <circle class="nn-node" cx="158" cy="98"  r="3.2"/>
+              <circle class="nn-node" cx="158" cy="116" r="3.2"/>
+            </g>
+          </svg>
+        </div>
         <div>
           <p>
             I like the messy middle of software: the place where a request leaves one machine, gets queued, balanced, replicated, and still has to come back fast. That's pulled me toward databases, backend infra, and lately the emerging problem space of <strong>LLM inference at scale</strong>.
